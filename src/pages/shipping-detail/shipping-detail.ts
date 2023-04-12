@@ -21,7 +21,7 @@ export class ShippingDetailPage {
   edit:any='';
   upload_url:any='';
   offer_id:any='';
-  
+  redeem_type:any='';
   constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public loadingCtrl:LoadingController,public alertCtrl:AlertController,private app: App, private InAppBrowser: InAppBrowser,public constn:ConstantProvider) {
   }
   
@@ -30,6 +30,8 @@ export class ShippingDetailPage {
     this.upload_url = this.constn.upload_url;
     this.karigar_gift_id = this.navParams.get('id');
     this.gift_id = this.navParams.get('gift_id');
+    this.redeem_type = this.navParams.get('redeem_type');
+
     console.log( this.gift_id);
     
     this.getShippedDetail();
@@ -61,8 +63,8 @@ export class ShippingDetailPage {
           console.log(r);
           this.loading.dismiss();
           this.gift_detail=r['gift'];
-          this.offer_id=r['gift']['offer_id'];
-          console.log('offer id  ====>',this.offer_id)
+          // this.offer_id=r['gift']['offer_id'];
+          // console.log('offer id  ====>',this.offer_id)
           this.karigar_gift=r['karigar_gift']
           if(r['karigar_gift'] != null)
           {
@@ -70,7 +72,9 @@ export class ShippingDetailPage {
           }
           console.log(this.receive_status);
           console.log(this.gift_detail);
-          this.gift_detail.coupon_points = parseInt( this.gift_detail.coupon_points );
+          console.log( this.karigar_gift);
+          
+          this.karigar_gift.gift_points = parseInt( this.karigar_gift.gift_points );
         });
       }
       recvConfirmation(gift_id)

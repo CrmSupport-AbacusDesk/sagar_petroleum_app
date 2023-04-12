@@ -412,8 +412,6 @@
                 <img *ngIf="data.document_image != ''" [src]="data.document_image" alt="">
             </div>
             
-            
-            
             <div class="upload-document" (click)="onUploadChange_back()" *ngIf="data.document_type=='Adharcard'">
                 <p *ngIf="data.document_image_back==''"><i class="material-icons">add_circle</i><br>{{'Upload Aadhaar Card Back side' | translate}}</p>
                 <img *ngIf="data.document_image_back!=''" [src]="data.document_image_back" alt="">
@@ -444,6 +442,45 @@
         </ion-list>
     </div>
 </div>
+
+
+
+
+       
+    <div class="heading line" >
+        <p>{{'Bank Information' | translate}}</p>
+    </div>
+    <div class="ragistration-fields">
+        <div class="cs-form">
+            <ion-list>
+                <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && account_holder_name?.invalid}">
+                    <ion-label floating>{{'Account Holder Name' | translate}}</ion-label>
+                    <ion-input type="text"  name="account_holder_name"  ng-pattern-restrict #account_holder_name ="ngModel" [(ngModel)]="data.account_holder_name " required ></ion-input>
+                </ion-item>
+                
+                <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && bank_name?.invalid}">
+                    <ion-label floating>{{'Bank Name' | translate}}</ion-label>
+                    <ion-input type="text"  name="bank_name " pattern="[\x00-\x7F]+" ng-pattern-restrict #bank_name ="ngModel" [(ngModel)]="data.bank_name " required></ion-input>
+                </ion-item>
+                
+                
+                <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && account_no?.invalid}">
+                    <ion-label floating>{{'Account No' | translate}}.</ion-label>
+                    <ion-input type="tel" name="account_no " #account_no ="ngModel" [(ngModel)]="data.account_no" minlength="9" maxlength="18" required></ion-input>
+                </ion-item>
+                
+                <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && ifsc_code?.invalid}">
+                    <ion-label floating>{{'IFSC Code' | translate}}</ion-label>
+                    <ion-input type="text"  name="ifsc_code " #ifsc_code ="ngModel" [(ngModel)]="data.ifsc_code"  pattern="^[A-z]{4}[0][A-z0-9]{6}$" required></ion-input>
+                </ion-item>	
+                <p class="alert-line" *ngIf="ifsc_code.errors?.pattern">{{'Invaild'  | translate}}</p>
+                
+            </ion-list>
+        </div>
+    </div>
+
+
+
 
 
 

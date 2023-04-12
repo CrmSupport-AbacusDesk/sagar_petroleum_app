@@ -230,6 +230,82 @@
                 </div>
             </div> -->
             
+
+
+            <div class="heading line mt18 mb16">
+                <p>{{'Bank Information' | translate}}</p>
+              
+            </div>
+
+            <div class="pr-after">
+                <div class="profile-detail">
+              
+                <div class="text-box">
+                    <p>{{'Bank Name:' | translate}}</p>
+                    <h6>{{karigar_detail.bank_name ? karigar_detail.bank_name:'N/A' | titlecase}}</h6>
+                </div>
+
+                <div class="text-box">
+                    <p>{{'Account Holder Name:' | translate}}</p>
+                    <h6>{{karigar_detail.account_holder_name ? karigar_detail.account_holder_name:'N/A' | titlecase}}</h6>
+                </div>
+
+                <div class="text-box">
+                    <p>{{'Account Number:' | translate}}</p>
+                    <h6>{{ karigar_detail.account_no ? karigar_detail.account_no:'N/A'}} </h6>
+                </div>
+                <div class="text-box">
+                    <p>{{'IFSC Code:' | translate}}</p>
+                    <h6>{{karigar_detail.ifsc_code ? karigar_detail.ifsc_code:'N/A'}}</h6>
+                </div>
+           
+            </div>
+</div>
+
+
+
+
+
+
+
+<div class="heading line mt18 mb16">
+    <p>{{'Head Mechanic Information' | translate}}</p>
+  
+</div>
+
+<div class="pr-after">
+    <div class="profile-detail">
+  
+    <div class="text-box">
+        <p>{{'Name:' | translate}}</p>
+        <h6>{{karigar_detail.head_machanic_name ? karigar_detail.head_machanic_name:'N/A' | titlecase}}</h6>
+    </div>
+
+    
+    <div class="text-box">
+        <p>{{'Mobile Number:' | translate}}</p>
+        <h6>{{karigar_detail.head_machanic_mobile_no ? karigar_detail.head_machanic_mobile_no:'N/A'}}</h6>
+    </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             
             <ng-container *ngIf="karigar_detail.user_type != 3">
                 <div class="heading line mt16" *ngIf="karigar_detail.referral_code" (click)="share_code()">

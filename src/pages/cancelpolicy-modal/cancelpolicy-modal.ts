@@ -5,6 +5,9 @@ import { DbserviceProvider } from '../../providers/dbservice/dbservice';
 import { TransactionPage } from '../transaction/transaction';
 // import { TabsPage } from '../tabs/tabs';
 import { HomePage } from '../home/home';
+import { TranslateService } from '@ngx-translate/core';
+import { RegistrationPage } from '../login-section/registration/registration';
+import { ProfilePage } from '../profile/profile';
 
 
 
@@ -23,23 +26,48 @@ export class CancelpolicyModalPage {
     gift_id:any='';
     gift_detail:any='';
     loading:Loading;
+    redeemPoint:any={};
+    redeemType:any={};
+    UserType:any ={}
     offer_id:number=0;
     Null_offer_id:number=0;
     
-    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,public service:DbserviceProvider,public alertCtrl:AlertController,public loadingCtrl:LoadingController) {
-    }
     
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad CancelpolicyModalPage');
+    constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController,public service:DbserviceProvider,public alertCtrl:AlertController,public loadingCtrl:LoadingController, public translate:TranslateService) {
+        
+        
+        console.log();
+        
+            
+        this.redeemType = this.navParams.get('redeem_type');
+        console.log(this.redeemType);
+        
+        this.redeemPoint = this.navParams.get('redeem_point');
         this.karigar_id = this.navParams.get('karigar_id');
-        console.log(this.karigar_id);
         this.gift_id = this.navParams.get('gift_id');
-        this.offer_id = this.navParams.get('offer_id');
+
+
+        // this.offer_id = this.navParams.get('Null_offer_id');
+        console.log(this.offer_id);
+        
         this.Null_offer_id = this.navParams.get('Null_offer_id');
         if(this.Null_offer_id == 0 ){
             this.offer_id = 0 
         }
-        console.log(this.gift_id);
+
+
+        this.UserType=this.service.karigar_info.user_type;
+        // this.data.redeemType= "gift";
+        // if(this.redeemType == 'gift'){
+        //     this.data.payment_type= "Gift";
+        // }
+        
+    }
+    
+    ionViewDidLoad() {
+        this.karigar_id = this.navParams.get('karigar_id');
+        this.gift_id = this.navParams.get('gift_id');
+        this.offer_id = this.navParams.get('Null_offer_id');
         this.getOtpDetail();
         this.presentLoading();
     }
@@ -56,26 +84,25 @@ export class CancelpolicyModalPage {
     
     getOtpDetail()
     {
-        console.log('otp');
-        this.service.post_rqst({'karigar_id':this.service.karigar_id,'gift_id':this.gift_id,  'offer_id':this.offer_id},'app_karigar/sendOtp')
+        this.service.post_rqst({'karigar_id':this.service.karigar_id,'gift_id':this.gift_id, "redeem_amount":this.redeemPoint},'app_karigar/sendOtp')
         .subscribe((r)=>
         {
-            console.log(r);
             this.loading.dismiss();
             this.otp=r['otp'];
-            console.log(this.otp);
             this.karigar_detail=r['karigar'];
             this.gift_detail=r['gift'];
+            this.offer_id =  this.gift_detail.offer_id;
+            console.log(this.offer_id);
+            
+        
         });
     }
     resendOtp()
     {
         
-        this.service.post_rqst({'karigar_id':this.service.karigar_id,'gift_id':this.gift_id},'app_karigar/sendOtp')
+        this.service.post_rqst({'karigar_id':this.service.karigar_id,'gift_id':this.gift_id, "redeem_amount":this.redeemPoint},'app_karigar/sendOtp')
         .subscribe((r)=>
         {
-            
-            console.log(r);
             this.otp=r['otp'];
             console.log(this.otp);
         });
@@ -89,16 +116,58 @@ export class CancelpolicyModalPage {
         }
     }
     
+    saveFlag : boolean= false;
     submit()
     {
-        this.presentLoading();
-        console.log('data');
+        
         console.log(this.data);
-        this.service.post_rqst( {'karigar_id':this.service.karigar_id ,"gift_id": this.gift_id,'shipping_address':this.data.shipping_address,"offer_id":this.offer_id },'app_karigar/redeemRequest')
+        
+         if(!this.otp_value){
+            this.showAlert("OTP required");
+            return
+        }
+        else if(this.redeemType == 'gift'){
+            
+            if(!this.data.shipping_address){
+                this.showAlert("Shipping address required");
+                return
+            }
+        }
+        else if(this.redeemType == 'Cash'){
+            if(!this.data.account_holder_name  || !this.data.bank_name || !this.data.account_no || !this.data.ifsc_code){
+                this.showAlert("Bank details are missing");
+                return;
+            }
+         
+        }
+        // else if(this.redeemType == 'Cash' && this.data.payment_type == 'UPI ID'){
+        //     if(!this.data.upi_id){
+        //         this.showAlert("Please Enter UPI ID");
+        //         return;
+        //     }
+         
+        // }
+        if(!this.data.check){
+            this.showAlert("Read cancelation policy");
+            return
+        }
+        this.data.karigar_id = this.service.karigar_id,
+        this.data.gift_id = this.gift_id,
+
+        this.data.offer_id = this.offer_id,
+      
+        this.data.redeem_type = this.redeemType
+        
+        this.data.redeem_amount=  this.redeemPoint
+        // this.data.offer_id = this.gift_detail.offer_id,
+        this.presentLoading();
+this.saveFlag = true;
+        console.log('data');
+        this.service.post_rqst( {'data':this.data},'app_karigar/redeemRequest')
         .subscribe( (r) =>
         {
-            this.loading.dismiss();
             console.log(r);
+            this.loading.dismiss();
             if(r['status']=="SUCCESS")
             {
                 // this.navCtrl.setRoot(TabsPage,{index:'3'});
@@ -127,7 +196,7 @@ export class CancelpolicyModalPage {
                 text:'OK',
                 cssClass: 'close-action-sheet',
                 handler:()=>{
-                    this.navCtrl.push(TransactionPage);
+                    // this.navCtrl.push(TransactionPage);
                 }
             }]
         });
@@ -157,6 +226,60 @@ export class CancelpolicyModalPage {
         this.dismiss()
     }
     
+    bankDetail()
+    {
+        console.log(this.data);
+        if(this.data.check1==true)
+        {
+            this.data.ifsc_code=this.karigar_detail.ifsc_code;
+            this.data.account_no=this.karigar_detail.account_no;
+            this.data.account_holder_name=this.karigar_detail.account_holder_name;
+            this.data.bank_name=this.karigar_detail.bank_name;
+
+        }
+        else{
+            this.data.ifsc_code='';
+            this.data.account_no='';
+            this.data.account_holder_name='';
+            this.data.bank_name='';
+
+            
+        }
+        
+        
+    }
+
+
+      
+    myNumber()
+    {
+        console.log(this.data);
+        if(this.data.check3==true)
+        {
+            this.data.upi_id=this.karigar_detail.upi_id;
+           
+
+        }
+        else{
+            this.data.upi_id='';
+           
+
+            
+        }
+        
+        
+    }
+
+    goRegestrationsPage=()=>{
+        this.navCtrl.push(ProfilePage,{'data':this.karigar_detail,"mode":'redeem_page'})
+    }
+    editProfilePage()
+    {
+        this.karigar_detail.edit_profile= 'edit_profile';
+        this.navCtrl.push(RegistrationPage,{'data':this.karigar_detail,"mode":'edit_page'})
+     
+    }
+    
     address()
     {
         console.log(this.data);
@@ -167,7 +290,20 @@ export class CancelpolicyModalPage {
         else{
             this.data.shipping_address='';
         }
-        
-        
     }
+    
+    
+    
+    // $scope.validateMobile = function() {
+    //     console.log("mobile validation");
+    //     var input = document.getElementById('mobile_only');
+    //     var pattern = /^[6-9][0-9]{0,9}$/;
+    //     var value = input.value;
+    //     !pattern.test(value) && (input.value = value = '');
+    //     input.addEventListener('input', function() {
+    //       var currentValue = this.value;
+    //       if(currentValue && !pattern.test(currentValue)) this.value = value;
+    //       else value = currentValue;
+    //     });
+    //   };
 }

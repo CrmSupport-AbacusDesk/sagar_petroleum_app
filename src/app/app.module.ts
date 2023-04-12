@@ -9,6 +9,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { OtpPage } from '../pages/login-section/otp/otp';
 import { RegistrationPage } from '../pages/login-section/registration/registration';
 import { LoginScreenPage } from '../pages/login-section/login-screen/login-screen';
+
+
+import { RedeemTypePageModule } from './../pages/redeem-type/redeem-type.module';
+
+
 import { IonicSelectableModule } from 'ionic-selectable';
 import { StatusBar } from '@ionic-native/status-bar';
 import { PinchZoomModule } from 'ngx-pinch-zoom';
@@ -106,6 +111,7 @@ export function createTranslateLoader(http: HttpClient) {
         OtpPage,
         RegistrationPage,
         LoginScreenPage,
+    
         SafePipe,
         LanguagePage,
         SitePopoverPage,
@@ -134,6 +140,7 @@ export function createTranslateLoader(http: HttpClient) {
         ProductSubdetailPageModule,
         TransactionPageModule,
         ShippingDetailPageModule,
+        RedeemTypePageModule,
         SocialpagePageModule,
         NotificationPageModule,
         ContactPageModule,

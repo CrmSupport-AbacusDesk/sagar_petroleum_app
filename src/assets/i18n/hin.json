@@ -30,6 +30,18 @@
       "District":"जिला",
       "City":"शहर",
       "New Arrivals":"नवागन्तुक",
+
+      "Survey":"सर्वे",
+      "Pdf":"पीडीएफ",
+
+      "Shop Image":"दुकान छवि",
+      "Customer Category":"ग्राहक श्रेणी",
+      "PanCard Information":"पैनकार्ड की जानकारी",
+      "Bank Information":"बैंक संबंधी जानकारी",
+      "Head Mechanic Information":"हेड मैकेनिक सूचना",
+
+      "Redeem Request":"रिडीम रिक्वेस्ट",
+
       "Offer Products":"ऑफ़र उत्पाद",
       "Share App and Get Points":"ऐप साझा करें और अंक प्राप्त करें",
 	"New Arrival Products":"नए आगमन उत्पाद",
@@ -38,6 +50,7 @@
       "Select Document":"दस्तावेज़ का चयन करें",
       "Aadhaar card":"आधार कार्ड",
       "Pan Card":"पैन कार्ड",
+      "Pdf Catalogue":"पीडीएफ कैटलॉग",
       "Upload Document":"डाक्यमेन्ट अपलोड करें",
       "Voter Card":"वोटर कार्ड",
       "Aadhaar Number":"आधार नंबर",

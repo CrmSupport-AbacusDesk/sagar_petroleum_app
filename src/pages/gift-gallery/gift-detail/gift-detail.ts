@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Loading, LoadingController, App, ToastController, } from 'ionic-angular';
-import { CancelpolicyModalPage } from '../../cancelpolicy-modal/cancelpolicy-modal';
 import { DbserviceProvider } from '../../../providers/dbservice/dbservice';
 import { OffersPage } from '../../offers/offers';
 import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
 import * as jwt_decode from "jwt-decode";
 import { ConstantProvider } from '../../../providers/constant/constant';
+import { CancelpolicyModalPage } from '../../cancelpolicy-modal/cancelpolicy-modal';
 
 @IonicPage()
 @Component({
@@ -27,6 +27,7 @@ export class GiftDetailPage {
     lang:any='';
     uploadUrl:any='';
     offer_id:number=0;
+    redeem_type: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,public service:DbserviceProvider,public loadingCtrl:LoadingController,private app: App,public storage:Storage,public translate:TranslateService,public db:DbserviceProvider,public constant:ConstantProvider,public toastCtrl:ToastController) {}
     
     ionViewDidLoad() {
@@ -40,7 +41,7 @@ export class GiftDetailPage {
     }
     
     presentCancelPolicyModal() {
-        let contactModal = this.modalCtrl.create(CancelpolicyModalPage,{'karigar_id':this.service.karigar_id,'gift_id':this.gift_id,"offer_id":this.offer_id,"Null_offer_id":this.offer_id});
+        let contactModal = this.modalCtrl.create(CancelpolicyModalPage,{'karigar_id':this.service.karigar_id,'gift_id':this.gift_id,"redeem_type":'gift',"Null_offer_id":this.offer_id});
         contactModal.present();
         console.log('otp');
     }

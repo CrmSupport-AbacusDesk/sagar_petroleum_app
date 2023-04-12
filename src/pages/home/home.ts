@@ -41,11 +41,13 @@ import { PdfCataloguePage } from '../pdf-catalogue/pdf-catalogue';
 import { ProductDetailPage } from '../product-detail/product-detail';
 import { SocialpagePage } from '../socialpage/socialpage';
 import { DealerListPage } from '../sale-user-dealer/dealer-list/dealer-list';
+import { RedeemTypePage } from '../redeem-type/redeem-type';
 import { MechanicListPage } from '../sale-user-mechanic/mechanic-list/mechanic-list';
 import { SalesUserHistoryPage } from '../sales-user-history/sales-user-history';
 import { DigitalcatalogPage } from '../digitalcatalog/digitalcatalog';
 import { SurveyListPage } from '../survey/survey-list/survey-list';
 import { FurnitureIdeasdetailPage } from '../furniture-ideasdetail/furniture-ideasdetail';
+
 
 @Component({
     selector: 'page-home',
@@ -333,10 +335,101 @@ export class HomePage {
     {
         this.navCtrl.push(GiftListPage,{'mode':'home'});
     }
-    goOnGiftListPage1()
-    {
-        this.navCtrl.push(GiftListPage,{'mode':'redeemhome'});
+    // goOnGiftListPage1()
+    // {
+    //     this.navCtrl.push(GiftListPage,{'mode':'redeemhome'});
+    // }
+
+
+
+
+    goRedeemType(){
+
+        if( this.karigar_detail.status =='Suspect'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close',
+                subTitle:"Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only redeem your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        
+        else if(this.karigar_detail.status =='Pending'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only redeem your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.status =='Reject'){
+            let alert = this.alertCtrl.create({
+                title:'Sorry!',
+                cssClass:'action-close status-alert',
+                subTitle:"Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only redeem your points when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-22145760>011-22145760</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();  
+            return
+        }
+        else if(this.karigar_detail.user_type ==1 && this.karigar_detail.status =='Verified'){
+            this.navCtrl.push(RedeemTypePage,{'mode':'home',"balance_point":this.total_balance_point, "redeem_point":this.karigar_detail.redeem_balance});
+
+        }
+
+        else {
+            this.navCtrl.push(GiftListPage,{'mode':'home'});
+        }
     }
+
+
+
+
+
+
     
     goOnFurniturePage()
     {
