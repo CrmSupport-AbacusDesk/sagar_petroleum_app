@@ -62,7 +62,7 @@
 
 
 
-                    <ng-container
+                    <!-- <ng-container
                        >
 
                         <h1> {{'Bank Information' | translate}} </h1>
@@ -131,7 +131,61 @@
                             </div>
                         </ng-container>
 
+                    </ng-container> -->
+
+
+
+
+                    <ng-container >
+                        <h1> {{'Bank Information' | translate}} </h1>
+                        <div class="bnk_dtl" *ngIf="karigar_detail.bank_name && karigar_detail.account_holder_name && karigar_detail.account_no && karigar_detail.ifsc_code">
+                            <table>
+                                <tr>
+                                    <td>{{'Bank Name' | translate}}</td>
+                                    <th>{{karigar_detail.bank_name}}</th>
+                                </tr>
+
+
+                                <tr>
+                                    <td>{{'Account Holder Name' | translate}}</td>
+                                    <th>{{karigar_detail.account_holder_name}}</th>
+                                </tr>
+
+                                <tr>
+                                    <td>{{'Account No.' | translate}}</td>
+                                    <th>{{karigar_detail.account_no}}</th>
+                                </tr>
+                                <tr>
+                                    <td>{{'IFSC Code' | translate}}</td>
+                                    <th>{{karigar_detail.ifsc_code}}</th>
+                                </tr>
+                                
+                              
+                            </table>    
+                        </div>
+                        
+                        
+                        
+                        <ng-container *ngIf="!karigar_detail.account_holder_name || !karigar_detail.account_no || !karigar_detail.bank_name || !karigar_detail.ifsc_code">
+                            <div class="adhar alert-card">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <p>{{ 'Bank details are missing Please update your bank details' | translate}}</p>
+                                            <a round ion-button small (click)="goRegestrationsPage()">{{'Update detail' | translate}}</a>
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
+                        </ng-container>
+                       
                     </ng-container>
+
+
+
+
+
 
                     <!-- <ng-container
                         *ngIf="data.payment_type == 'UPI ID'">
@@ -195,11 +249,13 @@
                         <ion-checkbox color="secondary" checked="true" name="check" #check="ngModel"
                             [(ngModel)]="data.check" required></ion-checkbox>
                     </ion-item>
-                    <p>{{'I have read' | translate}} <a (click)="goOnCancelationPolicy()">{{'cancelation policy' |
+                    <p>{{'I have read' | translate}} <a (click)="goOnCancelationPolicy()">{{'cancellation policy' |
                             translate}}</a></p>
                 </div>
+
+
+                
                 <div class="footer-btn">
-                    <!-- <a class="outline-btn" (click)="dismiss()">{{'No' | translate}}</a> -->
 
                     <button class="outline-btn"
                     (click)="dismiss()">{{'No' | translate}}</button>

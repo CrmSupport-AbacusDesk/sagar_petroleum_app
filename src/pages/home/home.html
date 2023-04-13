@@ -31,7 +31,17 @@
     </ion-refresher>
     
     <div class="slide-image">
-        <ion-slides *ngIf="offer_list?.length" [initialSlide]="0" pager autoplay="1000" speed="1000">
+
+
+
+        <ion-slides *ngIf="appbanner.length && appbanner.length>1 " [initialSlide]="0" pager autoplay="1000" speed="1000">
+            <ion-slide class="wp100" *ngFor="let row of appbanner">
+                <img [src]="uploadUrl+row.banner">
+            </ion-slide>
+        </ion-slides>
+
+
+        <!-- <ion-slides *ngIf="offer_list?.length" [initialSlide]="0" pager autoplay="1000" speed="1000">
             <ion-slide class="wp100" *ngFor="let row of offer_list" (click)="goOnOffersPage(row.id)">
                 <img [src]="row.offer_banner">
             </ion-slide>
@@ -43,7 +53,7 @@
                     <img [src]="uploadUrl+row.banner">
                 </ion-slide>
             </ion-slides>
-        </div>
+        </div> -->
     </div>
     
     <div class="pr-grid">
@@ -54,8 +64,11 @@
         <div class="ri-ght">
             <div class="align-ri">
                 <h1>{{karigar_detail.first_name | titlecase}} {{karigar_detail.last_name | titlecase}}</h1>
+                <h6 class="kr_hed">{{karigar_detail.machanic_type | titlecase}}</h6>
                 <h2 *ngIf="karigar_detail.user_type == 1">{{karigar_detail.company_name}}</h2>
+               
                 <p>{{karigar_detail.city | titlecase}}
+                 
                     <ng-container *ngIf="karigar_detail.user_type == 1">
                         <span *ngIf="karigar_detail.status =='Pending'">
                             <i class="material-icons" >hourglass_full</i>{{'Pending For Verification' | translate}}
@@ -120,28 +133,28 @@
         
 
             
-                <li (click)="goOnPointeListPage()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+                <li (click)="goOnPointeListPage()" *ngIf="karigar_detail.status =='Verified'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/payment.svg">
                     </div>
                     <p>{{'Scan History' | translate}}</p>
                 </li>
 
-                <li (click)="goOnOffersListPage()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+                <li (click)="goOnOffersListPage()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Head Mechanic'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/offer.svg">
                     </div>
                     <p>{{'Offers' | translate}}</p>
                 </li>
 
-                <li (click)="goOnArrivalProductsPage()" *ngIf="karigar_detail.status =='Verified && karigar_detail.user_type!=3'">
+                <!-- <li (click)="goOnArrivalProductsPage()" *ngIf="karigar_detail.status =='Verified'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/new-arrivals.svg">
                     </div>
                     <p>{{'New Arrivals' | translate}}</p>
-                </li>
+                </li> -->
 
-                <li (click)="goOnGiftGallary()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+                <li (click)="goOnGiftGallary()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Head Mechanic'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/gift.svg">
                     </div>
@@ -216,7 +229,7 @@
 
 
 
-                <li (click)="goRedeemType()" *ngIf="karigar_detail.status =='Verified'">
+                <li (click)="goRedeemType()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Head Mechanic'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/wallet.svg">
                     </div>
@@ -224,7 +237,7 @@
                 </li>
 
 
-                <li (click)="gotoHistory()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+                <li (click)="gotoHistory()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Head Mechanic'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/history.svg">
                     </div>
@@ -232,7 +245,7 @@
                 </li>
 
 
-                <li (click)="SurveyList()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+                <li (click)="SurveyList()" *ngIf="karigar_detail.status =='Verified'">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/history.svg">
                     </div>

@@ -55,11 +55,11 @@
                 
                 
                 <div class="profile-list">
-                    <div class="list-icon" >
+                    <div class="list-icon" *ngIf="karigar_detail.machanic_type =='Head Mechanic'">
                         <i class="material-icons" >apartment</i> {{karigar_detail.company_name ? karigar_detail.company_name : 'N/A' |titlecase}}
                     </div>
 
-                    <div class="list-icon wht_ic" >
+                    <div class="list-icon wht_ic" *ngIf="karigar_detail.machanic_type =='Head Mechanic'">
                         <img src="assets/imgs/gst.svg"> {{karigar_detail.gst_no ? karigar_detail.gst_no : 'N/A'}}
                     </div>
                     <!-- <div class="list-icon" *ngIf="karigar_detail.user_type == 2">
@@ -289,17 +289,6 @@
 
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

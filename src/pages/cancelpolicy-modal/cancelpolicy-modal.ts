@@ -134,7 +134,7 @@ export class CancelpolicyModalPage {
             }
         }
         else if(this.redeemType == 'Cash'){
-            if(!this.data.account_holder_name  || !this.data.bank_name || !this.data.account_no || !this.data.ifsc_code){
+            if(!this.karigar_detail.account_holder_name  || !this.karigar_detail.bank_name || !this.karigar_detail.account_no || !this.karigar_detail.ifsc_code){
                 this.showAlert("Bank details are missing");
                 return;
             }
@@ -148,7 +148,7 @@ export class CancelpolicyModalPage {
          
         // }
         if(!this.data.check){
-            this.showAlert("Read cancelation policy");
+            this.showAlert("Read cancellation policy");
             return
         }
         this.data.karigar_id = this.service.karigar_id,

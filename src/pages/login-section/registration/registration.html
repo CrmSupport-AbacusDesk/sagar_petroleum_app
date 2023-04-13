@@ -47,7 +47,7 @@
                         </ion-item> -->
                         <ion-item class="cs-input" [ngClass]="{'error':f.submitted && first_name?.invalid}">
                             <ion-label floating>{{'First Name' | translate}}*</ion-label>
-                            <ion-input type="text" name="first_name" #first_name="ngModel" [(ngModel)]="data.first_name" ></ion-input>
+                            <ion-input type="text" name="first_name" #first_name="ngModel" [(ngModel)]="data.first_name" required ></ion-input>
                         </ion-item>
                         <ion-item class="cs-input" [ngClass]="{'error':f.submitted && last_name?.invalid}">
                             <ion-label floating>{{'Last Name' | translate}}</ion-label>
@@ -72,12 +72,12 @@
             <!--//////////////// importaint //////////////-->
             
             
-            
+            <!-- *ngIf="data.user_type=='1' || data.user_type=='3'" -->
             
             <div class="cs-form">
-                <ion-list>
-                    <ion-item class="cs-input" [ngClass]="{'error':f.submitted && company_name?.invalid}" *ngIf="data.user_type=='1' || data.user_type=='3'">
-                        <ion-label floating>{{'Firm Name' | translate}}.*</ion-label>
+                <ion-list >
+                    <ion-item class="cs-input" [ngClass]="{'error':f.submitted && company_name?.invalid}" >
+                        <ion-label floating>{{'Firm Name' | translate}}.</ion-label>
                         <ion-input type="text" name="company_name" #company_name="ngModel" [(ngModel)]="data.company_name"  (keypress)="namecheck($event)"></ion-input>
                     </ion-item>
                     
@@ -99,7 +99,7 @@
                         [canSearch]="true" required>
                     </ionic-selectable>
                 </ion-item> -->
-                <ng-container *ngIf="data.user_type=='1'">
+                <ng-container >
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && gst_no?.invalid || gst_no.errors?.pattern}" >
                         <ion-label floating>{{'GST NO' | translate}}.</ion-label>
                         <ion-input type="text" id="gst_no" name="gst_no" #gst_no="ngModel" [(ngModel)]="data.gst_no" pattern="^[0-9]{2}[A-z]{5}[0-9]{4}[A-z]{1}[1-9A-z]{1}Z[0-9A-z]{1}$" ></ion-input>
@@ -130,7 +130,7 @@
             
             <ion-item class="cs-date mb0" [ngClass]="{'error':f.submitted && dob?.invalid}" *ngIf="data.user_type !='4'">
                 <ion-label>{{'Date of Birth' | translate}}*</ion-label>
-                <ion-datetime displayFormat="DD/MM/YYYY" max={{today_date}} type="text" name="dob" #dob="ngModel" [(ngModel)]="data.dob" >
+                <ion-datetime displayFormat="DD/MM/YYYY" max={{today_date}} type="text" name="dob" #dob="ngModel" [(ngModel)]="data.dob" required>
                 </ion-datetime>
             </ion-item>
         </ion-list>
@@ -285,9 +285,9 @@
             <ion-item class="multi-select" [ngClass]="{'error':f.submitted && user_category?.invalid}" >
                 <ion-label class="mt0 mb0">{{'Customer Category' | translate}}</ion-label>
                 <ion-select class="pt0 pb0" name="user_category" [(ngModel)]="data.user_category" #user_category="ngModel">
-                    <ion-option value="Truck">Truck</ion-option>
-                    <ion-option  value="Bike">Bike</ion-option>
-                    <ion-option  value="Car">Car</ion-option>
+                    <ion-option value="Truck Mechanic">Truck Mechanic</ion-option>
+                    <ion-option  value="Bike Mechanic">Bike Mechanic</ion-option>
+                    <ion-option  value="Car Mechanic">Car Mechanic</ion-option>
                 </ion-select>
             </ion-item>
         </ion-list>
@@ -454,23 +454,23 @@
         <div class="cs-form">
             <ion-list>
                 <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && account_holder_name?.invalid}">
-                    <ion-label floating>{{'Account Holder Name' | translate}}</ion-label>
+                    <ion-label floating>{{'Account Holder Name' | translate}}*</ion-label>
                     <ion-input type="text"  name="account_holder_name"  ng-pattern-restrict #account_holder_name ="ngModel" [(ngModel)]="data.account_holder_name " required ></ion-input>
                 </ion-item>
                 
                 <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && bank_name?.invalid}">
-                    <ion-label floating>{{'Bank Name' | translate}}</ion-label>
+                    <ion-label floating>{{'Bank Name' | translate}}*</ion-label>
                     <ion-input type="text"  name="bank_name " pattern="[\x00-\x7F]+" ng-pattern-restrict #bank_name ="ngModel" [(ngModel)]="data.bank_name " required></ion-input>
                 </ion-item>
                 
                 
                 <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && account_no?.invalid}">
-                    <ion-label floating>{{'Account No' | translate}}.</ion-label>
+                    <ion-label floating>{{'Account No' | translate}}*</ion-label>
                     <ion-input type="tel" name="account_no " #account_no ="ngModel" [(ngModel)]="data.account_no" minlength="9" maxlength="18" required></ion-input>
                 </ion-item>
                 
                 <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':f.submitted && ifsc_code?.invalid}">
-                    <ion-label floating>{{'IFSC Code' | translate}}</ion-label>
+                    <ion-label floating>{{'IFSC Code' | translate}}*</ion-label>
                     <ion-input type="text"  name="ifsc_code " #ifsc_code ="ngModel" [(ngModel)]="data.ifsc_code"  pattern="^[A-z]{4}[0][A-z0-9]{6}$" required></ion-input>
                 </ion-item>	
                 <p class="alert-line" *ngIf="ifsc_code.errors?.pattern">{{'Invaild'  | translate}}</p>

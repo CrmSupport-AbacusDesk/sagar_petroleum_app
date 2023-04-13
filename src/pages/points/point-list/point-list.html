@@ -48,13 +48,15 @@
           <!-- <p>{{'Scanned Points' | translate}}</p> -->
           <span *ngIf="list.type == 'box' "><strong>{{'Coupon Code' | translate}} : </strong> {{list.coupon_code}}</span>
           <span *ngIf="list.type == 'individual' "><strong>{{'Coupon Code' | translate}} : </strong> {{list.coupon_code}} <br>({{list.scan_by_karigar_date | date:'d MMMM y, h:mm a'}})</span>
-          <span><strong>{{'Product Name' | translate}} : </strong> {{list.product_name}}</span>
+          <span><strong>{{'Summary' | translate}} : </strong> {{list.summary}}</span>
+          <span><strong>{{'Date' | translate}} : </strong> {{list.date_created | date:'d MMMM y'}}</span>
+       
           <span *ngIf="list.type == 'box' "><strong>{{'Scan Date' | translate}} : </strong>({{list.scan_by_retailer_date | date:'d MMMM y, h:mm a'}})</span>
           <span *ngIf="list.type == 'individual' "><strong>{{'Scan Date' | translate}} : </strong>({{list.scan_by_karigar_date | date:'d MMMM y, h:mm a'}})</span>
 
         </div>
         <div class="right-block">
-          <h2>{{list.coupon_value}} <span>PT</span></h2>
+          <h2>{{list.points}} <span>PT</span></h2>
         </div>
       </ion-item>
     </ion-list>

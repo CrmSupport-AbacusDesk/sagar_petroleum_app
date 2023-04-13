@@ -46,6 +46,20 @@
       "Aadhaar card Number":"आधार कार्ड संख्या",
 
       "Shop Image":"दुकान छवि",
+
+      "Request Type":"अनुरोध का प्रकार",
+      "Cash":"नकद",
+      "Gift":"उपहार",
+
+      "NEXT":"अगला",
+      "No History":"कोई इतिहास नहीं",
+
+      "Total Balance":"कुल शेष",
+      "Redeemable Points":"रिडीमेंबल पॉइंट्स",
+
+
+      "Other Points":"अन्य बिंदु",
+
       "Customer Category":"ग्राहक श्रेणी",
       "PanCard Information":"पैनकार्ड की जानकारी",
       "Bank Information":"बैंक संबंधी जानकारी",
