@@ -76,12 +76,15 @@
             
             <div class="cs-form">
                 <ion-list >
+                    <div *ngIf="data.machanic_type =='Head Mechanic'">
+
+                   
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && company_name?.invalid}" >
                         <ion-label floating>{{'Firm Name' | translate}}.</ion-label>
                         <ion-input type="text" name="company_name" #company_name="ngModel" [(ngModel)]="data.company_name"  (keypress)="namecheck($event)"></ion-input>
                     </ion-item>
                     
-                    
+                </div>
                     
                     
                     
@@ -99,7 +102,7 @@
                         [canSearch]="true" required>
                     </ionic-selectable>
                 </ion-item> -->
-                <ng-container >
+                <ng-container *ngIf="data.machanic_type =='Head Mechanic'">
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && gst_no?.invalid || gst_no.errors?.pattern}" >
                         <ion-label floating>{{'GST NO' | translate}}.</ion-label>
                         <ion-input type="text" id="gst_no" name="gst_no" #gst_no="ngModel" [(ngModel)]="data.gst_no" pattern="^[0-9]{2}[A-z]{5}[0-9]{4}[A-z]{1}[1-9A-z]{1}Z[0-9A-z]{1}$" ></ion-input>
@@ -419,7 +422,7 @@
             
             <ng-container  *ngIf="data.document_type=='Adharcard'">
                 <ion-item class="cs-input mb0 mt10">
-                    <ion-label floating>{{'Aadhaar Number' | translate}}*</ion-label>
+                    <ion-label floating>{{'Aadhaar Number' | translate}}</ion-label>
                     <ion-input type="tel" name="document_no"  [(ngModel)]="data.document_no" maxlength="12" minlength="12"></ion-input>
                 </ion-item>  
             </ng-container>

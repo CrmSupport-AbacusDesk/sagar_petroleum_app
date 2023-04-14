@@ -30,43 +30,52 @@
       "District":"जिला",
       "City":"शहर",
       "New Arrivals":"नवागन्तुक",
-
       "Survey":"सर्वे",
       "Pdf":"पीडीएफ",
-
       "Bank Name:":"बैंक का नाम:",
       "Account Holder Name:":"खाता धारक का नाम:",
       "Account Number:":"खाता संख्या:",
       "IFSC Code:":"आईएफएससी कोड:",
-
       "Name:":"नाम:",
       "Mobile Number:":"मोबाइल नंबर:",
-
       "PanCard Number":"पैन कार्ड नंबर",
       "Aadhaar card Number":"आधार कार्ड संख्या",
-
       "Shop Image":"दुकान छवि",
-
       "Request Type":"अनुरोध का प्रकार",
       "Cash":"नकद",
       "Gift":"उपहार",
-
       "NEXT":"अगला",
+      "Firm Name":"फर्म का नाम।",
+      "GST NO":"जीएसटी सं।",
+      "HARYANA":"हरयाणा",
+      "Faridabad":"फरीदाबाद",
+      "Truck Mechanic":"ट्रक मैकेनिक",
+      "Bike Mechanic":"बाइक मैकेनिक",
+      "Car Mechanic":"मॅटर का कारीगर",
+      "Driving License":"ड्राइविंग लाइसेंस",
+      "License Number":"लाइसेंस संख्या",
+      "Account Holder Name":"खाता धारक का नाम",
+      "Bank Name":"बैंक का नाम",
+      "Account No":"खाता नंबर",
+      "IFSC Code":"आईएफएससी कोड",
+      "Are you sure to redeem your":"क्या आप अपना रिडीम करना सुनिश्चित करते हैं",
+      "Same as address":"पते के समान",
+      "Shipping Address":"शिपिंग पता",
+      "Account No.":"खाता नंबर।",
+      "Req Type":"अनुरोध प्रकार",
+      "Sagar Petroleum":"सागर पेट्रोलियम",
+      "Enter your 6 digit number that sent to":"अपना 6 अंकों का नंबर दर्ज करें जिसे भेजा गया है",
+      "I have read":"मैंने पढ़ा है",
+      "cancellation policy":"रद्द करने की नीति",
       "No History":"कोई इतिहास नहीं",
-
       "Total Balance":"कुल शेष",
       "Redeemable Points":"रिडीमेंबल पॉइंट्स",
-
-
       "Other Points":"अन्य बिंदु",
-
       "Customer Category":"ग्राहक श्रेणी",
       "PanCard Information":"पैनकार्ड की जानकारी",
       "Bank Information":"बैंक संबंधी जानकारी",
       "Head Mechanic Information":"हेड मैकेनिक सूचना",
-
       "Redeem Request":"रिडीम रिक्वेस्ट",
-
       "Offer Products":"ऑफ़र उत्पाद",
       "Share App and Get Points":"ऐप साझा करें और अंक प्राप्त करें",
 	"New Arrival Products":"नए आगमन उत्पाद",
@@ -219,6 +228,15 @@
       "Category":"श्रेणी",
       "Earn Points":"अंक अर्जित करें",
       "Bonus  Points":"बोनस अंक",
-      "Downloads":"डाउनलोड"
+      "Downloads":"डाउनलोड",
+      "Date":"तारीख",
+      "Req. ID":"अनुरोध। पहचान",
+      "Title":"शीर्षक",
+      "Redeem Type":"रिडीम प्रकार",
+      "Redeem Status":"रिडीम स्थिति",
+      "Reject Reason":"कारण अस्वीकार करें",
+      "Transfer Date":"हस्तांतरण की तारीख",
+      "Transfer Remark":"स्थानांतरण टिप्पणी",
+      "Shipped Detail":"भेज दिया विवरण"
 
 }

@@ -382,11 +382,11 @@ export class RegistrationPage {
                     return
                 }
 
-                else if (this.data.company_name =='' ) {
-                    // alert('Please fill the Blank input');
-                    this.alertToast("Please fill Company Name")
-                    return
-                }
+                // else if (this.data.company_name =='' ) {
+                
+                //     this.alertToast("Please fill Company Name")
+                //     return
+                // }
 
                 else if (this.data.mobile_no =='' ) {
                     // alert('Please fill the Blank input');

@@ -32,10 +32,10 @@
                 </div>
             </li>
             <li class="you" *ngIf="row.reply || row.attach_reply">
-                <div class="entete">
+                <!-- <div class="entete">
                     <span class="status green"></span>
                     <h3>{{row.reply_date == '0000-00-00 00:00:00' ? '' : row.reply_date | date:'d MMM h:m a'}}</h3>
-                </div>
+                </div> -->
                 
                 <div *ngIf="row.reply" class="message">
                     {{row.reply}}
