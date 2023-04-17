@@ -39,9 +39,15 @@ export class RegistrationPage {
     distributor_list:any;
     dialog: any={};
     // alertToast: any={};
+    filter: any={};
+
+
     
     constructor(public navCtrl: NavController,  public toastCtrl: ToastController, public navParams: NavParams, public service:DbserviceProvider,public alertCtrl:AlertController ,public actionSheetController: ActionSheetController,private camera: Camera,private loadingCtrl:LoadingController,private transfer: FileTransfer,public modalCtrl: ModalController,private storage:Storage,public translate:TranslateService) {
  
+
+// this.getAssis_list();
+
         this.data.user_type=1;
 
         console.log(this.data.user_type);
@@ -1031,5 +1037,25 @@ MobileNumber(event: any) {
         event.preventDefault();
     }
 }
+
+
+
+
+
+// assistant_mc: any = [];
+// getAssis_list(){
+
+
+//     this.filter.head_machanic_id = 1;
+//     this.filter.limit = 0;
+//     console.log(this.filter.head_machanic_id);
+//     this.service.post_rqst({'filter':this.filter},'app_karigar/head_machanic_assistant_list')
+//     .subscribe( (r) =>
+//     {
+//         console.log("assiantace mechanic =====>",r);
+//         this.assistant_mc =r['head_machanic'];
+//         console.log(this.assistant_mc);
+//     });
+// }
 
 }

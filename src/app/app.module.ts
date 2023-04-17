@@ -97,6 +97,11 @@ import { MechanicListPageModule } from '../pages/sale-user-mechanic/mechanic-lis
 import { MechanicAddPageModule } from '../pages/sale-user-mechanic/mechanic-add/mechanic-add.module';
 import { SalesUserHistoryPageModule } from '../pages/sales-user-history/sales-user-history.module';
 import { DigitalcatalogPageModule } from '../pages/digitalcatalog/digitalcatalog.module';
+// import { AssitanceDetailPageModule } from '../pages/assitance-detail/assitance-detail.module';
+import { AssitanceListPageModule } from '../pages/assitance-list/assitance-list.module';
+import { AssitanceDetailPageModule } from '../pages/assitance-detail/assitance-detail.module';
+
+
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -130,6 +135,9 @@ export function createTranslateLoader(http: HttpClient) {
         ViewProfilePageModule,
         CancelationPolicyPageModule,
         PointListPageModule,
+AssitanceDetailPageModule,
+AssitanceListPageModule,
+
         PointDetailPageModule,
         ProfilePageModule,
         MainHomePageModule,

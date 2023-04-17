@@ -11,7 +11,9 @@
                 <span *ngIf="notify_cn" class="noti-count">{{notify_cn}}</span>
             </button>
         </ion-buttons>
-        <ion-buttons end (click)="scan()" *ngIf="karigar_detail.user_type!=3 && karigar_detail.status =='Verified'">
+
+       
+        <ion-buttons end (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic'">
             <button ion-button icon-only >
                <ion-icon name="qr-scanner"></ion-icon>
             </button>
@@ -30,7 +32,26 @@
         </ion-refresher-content>
     </ion-refresher>
     
+
+
+
+
     <div class="slide-image">
+        <ion-slides *ngIf="appbanner.length && appbanner.length>0 " [initialSlide]="0" pager autoplay="1000" speed="1000" loop="true">
+            <ion-slide *ngFor="let row of appbanner">
+                <img [src]="uploadUrl+row.banner">
+            </ion-slide>
+        </ion-slides>
+        <div *ngIf="appbanner.length==1">
+            <img [src]="uploadUrl+appbanner[0].banner">
+        </div>
+        <div *ngIf="appbanner.length <= 0">
+            <img src="../../assets/imgs/appbanner.png">
+        </div>
+    </div>
+
+
+    <!-- <div class="slide-image">
 
 
 
@@ -41,7 +62,7 @@
         </ion-slides>
 
 
-        <!-- <ion-slides *ngIf="offer_list?.length" [initialSlide]="0" pager autoplay="1000" speed="1000">
+        <ion-slides *ngIf="offer_list?.length" [initialSlide]="0" pager autoplay="1000" speed="1000">
             <ion-slide class="wp100" *ngFor="let row of offer_list" (click)="goOnOffersPage(row.id)">
                 <img [src]="row.offer_banner">
             </ion-slide>
@@ -53,8 +74,8 @@
                     <img [src]="uploadUrl+row.banner">
                 </ion-slide>
             </ion-slides>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
     
     <div class="pr-grid">
         <div class="le-ft" (click)="viewProfiePic()">
@@ -207,12 +228,7 @@
                     <p>{{'Products' | translate}}</p>
                 </li> -->
 
-                <li (click)="goOnAdvanceTextPage()">
-                    <div class="img-view">
-                        <img src="assets/imgs/home-icon/company.svg">
-                    </div>
-                    <p>{{'About Us' | translate}}</p>
-                </li>
+              
                 <li (click)="gotoChangeLang()">
                     <div class="img-view">
                         <img src="assets/imgs/home-icon/language_icon.svg">
@@ -247,11 +263,19 @@
 
                 <li (click)="SurveyList()" *ngIf="karigar_detail.status =='Verified'">
                     <div class="img-view">
-                        <img src="assets/imgs/home-icon/history.svg">
+                        <img src="assets/imgs/home-icon/survey.png">
                     </div>
                     <p>{{'Survey' | translate}}</p>
                 </li>
 
+
+
+                <li (click)="Assistance_detail()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Head Mechanic'" >
+                    <div class="img-view">
+                        <img src="assets/imgs/home-icon/assis.png">
+                    </div>
+                    <p>{{'Assistant Detail' | translate}}</p>
+                </li>
 
 
                
@@ -283,7 +307,12 @@
                     </div>
                     <p>{{'FAQ' | translate}}</p>
                 </li>
-              
+                <li (click)="goOnAdvanceTextPage()">
+                    <div class="img-view">
+                        <img src="assets/imgs/home-icon/company.svg">
+                    </div>
+                    <p>{{'About Us' | translate}}</p>
+                </li>
                 
                 <li (click)="goOnContactPage()">
                     <div class="img-view">

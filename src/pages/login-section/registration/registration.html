@@ -296,6 +296,65 @@
         </ion-list>
     </div>
 </div>
+
+
+
+
+
+
+
+<!-- 
+ <div class="heading line" >
+    <p>{{'Assitant mechanic' | translate}}</p>
+</div>
+<div class="ragistration-fields" >
+    <div class="cs-form">
+      
+
+
+            <mat-form-field class="cs-input">
+                <mat-select placeholder="Head Mechanic" name="assis_employee_id"
+                    [(ngModel)]="data.assis_employee_id"
+                    #assis_employee_id="ngModel">
+                    <mat-option *ngFor="let val of assistant_mc" [value]="val.id">
+                        {{val.full_name | titlecase}} {{val.mobile_no}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+      
+    </div>
+</div>  -->
+
+
+
+
+
+<!-- <div *ngIf="data.machanic_type =='Head Mechanic'">
+
+
+
+<div class="heading line" >
+    <p>{{'Assitant Mechanic Information' | translate}}</p>
+</div>
+<div class="ragistration-fields" >
+    <div class="cs-form">
+        <ion-list>
+            <ion-item class="multi-select" [ngClass]="{'error':f.submitted && assis_employee_id?.invalid}" >
+                <ion-label class="mt0 mb0">{{'Assitant Mechanic' | translate}}</ion-label>
+                <ion-select class="pt0 pb0" name="assis_employee_id" [(ngModel)]="data.assis_employee_id" #assis_employee_id="ngModel">
+                    <ion-option *ngFor="let row of assistant_mc" value="{{row.assis_employee_id}}">{{row.full_name}}/{{row.mobile_no}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+    </div>
+</div>
+
+</div> -->
+
+
+
+
+
 <!-- <div class="heading line" *ngIf="data.user_type=='2'">
     <p>{{'Distributor Information' | translate}}</p>
 </div>
@@ -393,11 +452,11 @@
 </div> -->
 <!-- ////////////////////visitor registration address end -->
 <!-- /////// Importaint //////////// -->
-<div class="heading line" *ngIf="data.user_type !='4'">
+<div class="heading line" >
     <p>{{'Document Information' | translate}}</p>
 </div>
 
-<div class="ragistration-fields" *ngIf="data.user_type !='4'">
+<div class="ragistration-fields" >
     <div class="cs-form">
         <ion-list>
             <ion-item class="cs-select">
@@ -429,7 +488,7 @@
             
             <ng-container *ngIf="data.document_type=='License'" >
                 <ion-item class="cs-input mb0 mt10" [ngClass]="{'error':document_no.errors?.pattern}">
-                    <ion-label floating>{{'License Number' | translate}}*</ion-label>
+                    <ion-label floating>{{'License Number' | translate}}</ion-label>
                     <ion-input type="text" name="document_no" #document_no="ngModel" [(ngModel)]="data.document_no" pattern="[A-z]{2}[0-9]{13}" maxlength="15" minlength="15"></ion-input>
                 </ion-item>
                 <p class="error-msg" *ngIf="document_no.errors?.pattern" style="margin-top: 0px !important;">Invaild License Number (Special character not allowed)</p>

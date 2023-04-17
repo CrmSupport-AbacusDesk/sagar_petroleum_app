@@ -97,7 +97,27 @@
 </div>
 
 
-       
+
+
+
+<div *ngIf="karigar_detail.machanic_type =='Head Mechanic'">
+
+
+
+<div class="heading line mt18 mb16">
+    <p>{{'Assistant Mechanic Information' | translate}}</p>
+  
+</div>
+
+<div class="pr-after">
+<div class="profile-detail">
+<p style="padding-left: 20px!important;">{{karigar_detail.name}}</p>
+</div>
+</div>
+
+</div>
+
+
         <!-- == '2_Wheeler'? '2 Wheeler' : '4 Wheeler'  -->
 
         <!-- <div class="heading line mt32" *ngIf="karigar_detail.user_type==2">
@@ -130,18 +150,18 @@
 
 
 
-        <div class="heading line mt18 mb16" *ngIf="karigar_detail.user_type == 1">
+        <div class="heading line mt18 mb16" >
             <p>{{'Document Information' | translate}}</p>
             <!-- <div class="little-edit">
                 <a *ngIf="edit1==''"><i class="material-icons" (click)="onUploadChange();edit1 = '1' ">edit</i></a>
                 <a *ngIf="edit1=='1'"><i class="material-icons" (click)="uploadDocImage(karigar_detail.document_image,karigar_detail.document_no,karigar_detail.document_image_back)">save</i></a>
             </div> -->
         </div>
-        <div class="adhar" *ngIf="karigar_detail.user_type == 1">
+        <div class="adhar" >
             <div class="doc-img">
                 <img src="{{karigar_detail.document_image ? karigar_detail.document_image : 'assets/imgs/adhar.png'}}">
             </div>
-            <div class="doc-img" *ngIf="karigar_detail.user_type == 1">
+            <div class="doc-img" *ngIf="karigar_detail.document_type=='Adharcard'">
                 <img src="{{karigar_detail.document_image_back ? karigar_detail.document_image_back : 'assets/imgs/adhar.png'}}">
             </div>
             <p *ngIf="karigar_detail.document_type=='Adharcard'">{{'Aadhaar card Number' | translate}}</p>

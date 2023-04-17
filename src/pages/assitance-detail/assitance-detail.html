@@ -1,0 +1,75 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Assistant Mechanic Detail</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{'Pull to refresh' | translate}}" refreshingSpinner="circles" refreshingText="{{'Refreshing...' | translate}}">
+    </ion-refresher-content>
+</ion-refresher> -->
+
+
+
+
+
+<div class="pl16 pr16">
+  <h3 class="mc_detail">
+    Mechanic Detail
+  </h3>
+  <!-- <div class="gift-list" >
+      <div class="list-item">
+          <div class="head-detail">
+              <div class="head"> -->
+                 <div class="detail_mr">
+
+                  <p class="bold-text"><strong>Name:</strong>{{assistant_main_detail.full_name}}</p>
+                  <p class="bold-text"><strong>Date:</strong>{{assistant_main_detail.date_created | date:'d MMMM y'}}</p>
+                  <p class="bold-text"><strong>User category:</strong>{{assistant_main_detail.user_category}}</p>
+                  <p class="bold-text"><strong>Mobile Number:</strong>{{assistant_main_detail.mobile_no}}</p>
+                    <p class="bold-text"><strong>State:</strong>{{assistant_main_detail.state}}</p>
+                    <p class="bold-text"><strong>District:</strong>{{assistant_main_detail.district}}</p>
+                    <p class="bold-text"><strong>City:</strong>{{assistant_main_detail.city}}</p>
+                    <p class="bold-text"><strong>Pincode:</strong>{{assistant_main_detail.pincode}}</p>
+                    <p class="bold-text"><strong>Address:</strong>{{assistant_main_detail.address}}</p>
+                 </div>
+               
+             
+<!--                  
+              </div>
+          </div>  
+       
+      </div>
+  </div> -->
+</div>
+
+
+
+
+<div class="pl16 pr16">
+  <div class="gift-list"  *ngFor="let data of assistant_detail; let i=index" >
+      <div class="list-item">
+          <div class="head-detail">
+              <div class="head">
+                 
+                  <p class="bold-text">Date:{{data.date_created | date:'d MMMM y'}}</p>
+                  <p class="bold-text">Points:{{data.points}}</p>
+                  <p class="bold-text">Log Type:{{data.log_type}}</p>
+                  <p class="bold-text">Summary:{{data.summary}}</p>
+             
+                 
+              </div>
+          </div>  
+       
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+</ion-content>

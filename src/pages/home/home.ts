@@ -47,6 +47,8 @@ import { SalesUserHistoryPage } from '../sales-user-history/sales-user-history';
 import { DigitalcatalogPage } from '../digitalcatalog/digitalcatalog';
 import { SurveyListPage } from '../survey/survey-list/survey-list';
 import { FurnitureIdeasdetailPage } from '../furniture-ideasdetail/furniture-ideasdetail';
+// import { AssitanceDetailPage } from '../assitance-detail/assitance-detail';
+import { AssitanceListPage } from '../assitance-list/assitance-list';
 
 
 @Component({
@@ -318,6 +320,9 @@ export class HomePage {
         this.navCtrl.push(SurveyListPage)
     }
 
+    Assistance_detail(){
+        this.navCtrl.push(AssitanceListPage)
+    }
 
     goOnFeedbackPage()
     {
