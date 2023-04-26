@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>Assistant Mechanic Detail</ion-title>
+    <ion-title>{{'Assistant Mechanic Detail' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -54,10 +54,10 @@
           <div class="head-detail">
               <div class="head">
                  
-                  <p class="bold-text">Date:{{data.date_created | date:'d MMMM y'}}</p>
-                  <p class="bold-text">Points:{{data.points}}</p>
-                  <p class="bold-text">Log Type:{{data.log_type}}</p>
-                  <p class="bold-text">Summary:{{data.summary}}</p>
+                  <p class="bold-text"><strong>Date:</strong>{{data.date_created | date:'d MMMM y'}}</p>
+                  <p class="bold-text"><strong>Points:</strong>{{data.points}}</p>
+                  <!-- <p class="bold-text">Log Type:{{data.log_type}}</p> -->
+                  <p class="bold-text"><strong>Summary:</strong>{{data.summary}}</p>
              
                  
               </div>
@@ -69,7 +69,10 @@
 
 
 
-
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="flag!=1">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 
 
 </ion-content>

@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Assistant Mechanic List</ion-title>
+    <ion-title>{{'Assistant Mechanic List' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -16,7 +16,7 @@
     </ion-refresher-content>
 </ion-refresher> -->
 
-<div class="pl16 pr16">
+<div class="pl16 pr16 list_pd">
   <div class="gift-list"  *ngFor="let row of assistant_mc; let i=index" (click)="goOnAssisDetail(row.id)">
       <div class="list-item">
           <div class="head-detail">
@@ -32,6 +32,12 @@
       </div>
   </div>
 </div>
+
+
+<ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="flag!=1">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
 
 
 </ion-content>

@@ -60,4 +60,38 @@ goOnAssisDetail(id){
   this.navCtrl.push(AssitanceDetailPage,{'id':id})
 }
 
+
+
+
+
+flag:any='';
+ loadData(infiniteScroll)
+ {
+  this.filter.head_machanic_id = this.service.karigar_id;
+  this.filter.limit = 0;
+  console.log(this.filter.head_machanic_id);
+     this.service.post_rqst({'filter':this.filter},'app_karigar/head_machanic_assistant_list')
+     .subscribe( (r) =>
+     {
+         console.log(r);
+         if(r=='')
+         {
+             this.flag=1;
+         }
+         else
+         {
+             setTimeout(()=>{
+              console.log("assiantace mechanic =====>",r);
+              this.assistant_mc =r['head_machanic'];
+              console.log(this.assistant_mc);
+                 console.log('Asyn operation has stop')
+                 infiniteScroll.complete();
+             },1000);
+         }
+     });
+ }
+
+
+
+
 }

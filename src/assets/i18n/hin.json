@@ -237,6 +237,17 @@
       "Reject Reason":"कारण अस्वीकार करें",
       "Transfer Date":"हस्तांतरण की तारीख",
       "Transfer Remark":"स्थानांतरण टिप्पणी",
-      "Shipped Detail":"भेज दिया विवरण"
+      "Shipped Detail":"भेज दिया विवरण",
+      "Assistant Detail":"सहायक विवरण",
+      "Assistant Mechanic List":"सहायक मैकेनिक सूची",
+      "Assistant Mechanic Detail":"सहायक मैकेनिक विवरण",
+      "Mechanic Detail":"मैकेनिक विवरण",
+      "Name":"नाम",
+     
+      "User Category":"उपयोगकर्ता श्रेणी",
+      "Mobile Number":"मोबाइल नंबर"
+    
+
+
 
 }
