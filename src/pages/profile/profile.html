@@ -200,6 +200,47 @@
             </h1> -->
         </div>
         
+
+
+
+
+
+        <div class="heading line mt18 mb16">
+            <p>{{'Kyc Information' | translate}}</p>
+          
+        </div>
+
+        <div class="pr-after">
+            <div class="profile-detail">
+          
+            <div class="text-box">
+                <p>{{'Kyc Status:' | translate}}</p>
+                <h6>{{karigar_detail.kyc_status ? karigar_detail.kyc_status:'N/A' | titlecase}}</h6>
+            </div>
+
+            <div class="text-box">
+                <p>{{'Kyc Status Verified Date:' | translate}}</p>
+                <h6>{{(karigar_detail.kyc_status_update_date !='') ? (karigar_detail.kyc_status_update_date| date:'d MMM,y'):('N/A')}}</h6>
+            </div>
+
+            <div class="text-box" *ngIf="karigar_detail.kyc_status == 'Reject'">
+                <p>{{'Kyc Status Reason:' | translate}}</p>
+                <h6>{{ karigar_detail.kyc_status_reason ? karigar_detail.kyc_status_reason:'N/A'}} </h6>
+            </div>
+         
+       
+        </div>
+</div>
+
+
+
+
+
+
+
+
+
+
         
         <!-- <div class="heading line mt18 mb16" *ngIf="karigar_detail.user_type != 3">
             <p>{{'Visting Card/Shop' | translate}}</p>

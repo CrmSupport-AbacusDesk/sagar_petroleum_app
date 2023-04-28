@@ -148,16 +148,16 @@ export class RegistrationPage {
     
     
     
-    // getstatelist(){
-    //     this.service.get_rqst('app_master/getStates').subscribe( r =>
-    //         {
-    //             console.log(r);
-    //             this.state_list=r['states'];
+    getstatelist(){
+        this.service.get_rqst('app_master/getStates').subscribe( r =>
+            {
+                console.log(r);
+                this.state_list=r['states'];
                 
-    //             this.karigar_id=r['id'];
-    //             console.log(this.state_list);
-    //         });
-    //     }
+                this.karigar_id=r['id'];
+                console.log(this.state_list);
+            });
+        }
         
         getDistributor(district){
             this.service.post_rqst({'district':district},'app_master/getDistributors')
@@ -173,65 +173,65 @@ export class RegistrationPage {
 
 
 
-        getstatelist() {
-            this.service.get_rqst('app_master/getStates').subscribe(r => {
-                console.log(r);
-                this.state_list = r['states'];
-                this.karigar_id = r['id'];
-                console.log(this.state_list);
-            });
-        }
-        getDistrictList(state_name) {
-            console.log(state_name);
-            this.service.post_rqst({ 'state_name': state_name }, 'app_master/getDistrict')
-                .subscribe((r) => {
-                    console.log(r);
-                    this.district_list = r['districts'];
-                    console.log(this.state_list);
-                });
-        }
+        // getstatelist() {
+        //     this.service.get_rqst('app_master/getStates').subscribe(r => {
+        //         console.log(r);
+        //         this.state_list = r['states'];
+        //         this.karigar_id = r['id'];
+        //         console.log(this.state_list);
+        //     });
+        // }
+        // getDistrictList(state_name) {
+        //     console.log(state_name);
+        //     this.service.post_rqst({ 'state_name': state_name }, 'app_master/getDistrict')
+        //         .subscribe((r) => {
+        //             console.log(r);
+        //             this.district_list = r['districts'];
+        //             console.log(this.state_list);
+        //         });
+        // }
     
-        getCityList(district_name) {
-            console.log(district_name);
-            this.service.post_rqst({ 'district_name': district_name }, 'app_master/getCity')
-                .subscribe((r) => {
-                    console.log(r);
-                    this.city_list = r['cities'];
-                    this.pincode_list = r['pins'];
-                    console.log(this.pincode_list);
-                });
-        }
+        // getCityList(district_name) {
+        //     console.log(district_name);
+        //     this.service.post_rqst({ 'district_name': district_name }, 'app_master/getCity')
+        //         .subscribe((r) => {
+        //             console.log(r);
+        //             this.city_list = r['cities'];
+        //             this.pincode_list = r['pins'];
+        //             console.log(this.pincode_list);
+        //         });
+        // }
     
-        getaddress(pincode) {
-            console.log(pincode)
-            // if (pincode.length == 6) {
-                console.log(pincode.length);
-                this.service.post_rqst({ 'pincode': pincode }, 'app_karigar/getAddress')
-                    .subscribe((result) => {
-                        console.log(result);
-                        var address = result.address;
+        // getaddress(pincode) {
+        //     console.log(pincode)
+        
+        //         console.log(pincode.length);
+        //         this.service.post_rqst({ 'pincode': pincode }, 'app_karigar/getAddress')
+        //             .subscribe((result) => {
+        //                 console.log(result);
+        //                 var address = result.address;
     
-                        if (address != null) {
-                            this.data.state = result.address.state_name;
-                            this.getDistrictList(this.data.state);
-                            // this.getSalesUserlist(this.data.state);
-                            this.data.district = result.address.district_name;
-                            this.data.city = result.address.city;
-                            console.log(this.data);
-                        }
-                        else if (address == null) {
+        //                 if (address != null) {
+        //                     this.data.state = result.address.state_name;
+        //                     this.getDistrictList(this.data.state);
+                     
+        //                     this.data.district = result.address.district_name;
+        //                     this.data.city = result.address.city;
+        //                     console.log(this.data);
+        //                 }
+        //                 else if (address == null) {
                            
-                            this.RequiredAlert("Please Enter Valid Pincode");
-                            this.data.state = '';
-                            this.data.district = '';
-                            this.data.city = '';
-                            this.data.sales_user_id ='';
-                            return;
-                        }
-                    });
-            // }
+        //                     this.RequiredAlert("Please Enter Valid Pincode");
+        //                     this.data.state = '';
+        //                     this.data.district = '';
+        //                     this.data.city = '';
+        //                     this.data.sales_user_id ='';
+        //                     return;
+        //                 }
+        //             });
+         
     
-        }
+        // }
 
 
 
@@ -253,66 +253,66 @@ export class RegistrationPage {
 
 
 
-        // getDistrict(state) {
-        //     console.log(state);
+        getDistrict(state) {
+            console.log(state);
             
-        //     let loading = this.loadingCtrl.create({
-        //         spinner: 'hide',
-        //         content: `<img src="./assets/imgs/gif.svg" class="h15" />`,
-        //     });
+            let loading = this.loadingCtrl.create({
+                spinner: 'hide',
+                content: `<img src="./assets/imgs/gif.svg" class="h15" />`,
+            });
             
            
-        //     loading.present();
-        // }
+            loading.present();
+        }
         
         
         
-        // getDistrictList(state_name)
-        // {
-        //     console.log("state name is call ==>",state_name);
-        //     this.service.post_rqst({'state_name':state_name},'app_master/getDistrict')
-        //     .subscribe( (r) =>
-        //     {
-        //         console.log(r);
-        //         this.district_list=r['districts'];
-        //         console.log(this.state_list);
-        //     });
-        // }
+        getDistrictList(state_name)
+        {
+            console.log("state name is call ==>",state_name);
+            this.service.post_rqst({'state_name':state_name},'app_master/getDistrict')
+            .subscribe( (r) =>
+            {
+                console.log(r);
+                this.district_list=r['districts'];
+                console.log(this.state_list);
+            });
+        }
         
-        // getCityList(district_name)
-        // {
-        //     console.log(district_name);
-        //     this.service.post_rqst({'district_name':district_name},'app_master/getCity')
-        //     .subscribe( (r) =>
-        //     {
-        //         console.log(r);
-        //         this.city_list=r['cities'];
-        //         this.pincode_list=r['pins'];
-        //         console.log(this.pincode_list);
-        //     });
-        // }
+        getCityList(district_name)
+        {
+            console.log(district_name);
+            this.service.post_rqst({'district_name':district_name},'app_master/getCity')
+            .subscribe( (r) =>
+            {
+                console.log(r);
+                this.city_list=r['cities'];
+                this.pincode_list=r['pins'];
+                console.log(this.pincode_list);
+            });
+        }
         
-        // getaddress(pincode)
-        // {
-        //     if(this.data.pincode.length=='6')
-        //     {
-        //         this.service.post_rqst({'pincode':pincode},'app_karigar/getAddress')
-        //         .subscribe( (result) =>
-        //         {
-        //             console.log(result);
-        //             var address = result.address;
-        //             if(address!= null)
-        //             {
-        //                 this.data.state = result.address.state_name;
-        //                 this.getDistrictList(this.data.state)
-        //                 this.data.district = result.address.district_name;
-        //                 this.data.city = result.address.city;
-        //                 console.log(this.data);
-        //             }
-        //         });
-        //     }
+        getaddress(pincode)
+        {
+            if(this.data.pincode.length=='6')
+            {
+                this.service.post_rqst({'pincode':pincode},'app_karigar/getAddress')
+                .subscribe( (result) =>
+                {
+                    console.log(result);
+                    var address = result.address;
+                    if(address!= null)
+                    {
+                        this.data.state = result.address.state_name;
+                        this.getDistrictList(this.data.state)
+                        this.data.district = result.address.district_name;
+                        this.data.city = result.address.city;
+                        console.log(this.data);
+                    }
+                });
+            }
             
-        // }
+        }
         
         dsr_match:any='';
         scrollUp()
@@ -399,11 +399,7 @@ export class RegistrationPage {
                     this.alertToast("Please fill Mobile Number")
                     return
                 }
-                else if (this.data.dob =='' ) {
-                    // alert('Please fill the Blank input');
-                    this.alertToast("Please fill Date of Birth")
-                    return
-                }
+             
                 else if (this.data.address =='' ) {
                     // alert('Please fill the Blank input');
                     this.alertToast("Please fill Address")
@@ -420,11 +416,7 @@ export class RegistrationPage {
                     return
                 }
 
-                else if (this.data.pincode =='' ) {
-                    // alert('Please fill the Blank input');
-                    this.alertToast("Please fill Pincode")
-                    return
-                }
+             
 
                 else if (this.data.city =='' ) {
                     // alert('Please fill the Blank input');

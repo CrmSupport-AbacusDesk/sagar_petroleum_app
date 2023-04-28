@@ -245,7 +245,11 @@
       "Name":"नाम",
      
       "User Category":"उपयोगकर्ता श्रेणी",
-      "Mobile Number":"मोबाइल नंबर"
+      "Mobile Number":"मोबाइल नंबर",
+      "Kyc Information":"केवाईसी सूचना",
+      "Kyc Status:":"केवाईसी स्थिति",
+      "Kyc Status Verified Date:":"केवाईसी स्थिति सत्यापित तिथि",
+      "Kyc Status Reason:":"केवाईसी स्थिति कारण"
     
 
 

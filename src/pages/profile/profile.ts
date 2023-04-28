@@ -195,6 +195,12 @@ export class ProfilePage {
             console.log(r);
             this.loading.dismiss();
             this.karigar_detail=r['karigar'];
+
+
+            if(this.karigar_detail.dob == '0000-00-00'){
+                this.karigar_detail.dob = '';
+            }
+
             console.log(this.karigar_detail.document_image_back);
             
             this.language=r['language'];

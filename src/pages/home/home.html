@@ -13,7 +13,7 @@
         </ion-buttons>
 
        
-        <ion-buttons end (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic'">
+        <ion-buttons end (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic' " >
             <button ion-button icon-only >
                <ion-icon name="qr-scanner"></ion-icon>
             </button>
@@ -137,7 +137,7 @@
             <ul class="mb70">
 
            
-                    <li (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic'">
+                    <li (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic' && karigar_detail.kyc_status =='Verified'">
                         <div class="img-view">
                             <img src="assets/imgs/home-icon/scane.svg">
                         </div>
@@ -145,7 +145,7 @@
                     </li>
              
                
-                <li (click)="EnterCouponCode()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic'">
+                <li (click)="EnterCouponCode()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic' && karigar_detail.kyc_status =='Verified'">
                     <div class="img-view">
                         <img src="assets/imgs/scan.svg">
                     </div>
