@@ -41,6 +41,11 @@ export class RegistrationPage {
     // alertToast: any={};
     filter: any={};
 
+    states:any =[];
+    per_states:any =[];
+    districts:any =[];
+    citys:any =[];
+
 
     
     constructor(public navCtrl: NavController,  public toastCtrl: ToastController, public navParams: NavParams, public service:DbserviceProvider,public alertCtrl:AlertController ,public actionSheetController: ActionSheetController,private camera: Camera,private loadingCtrl:LoadingController,private transfer: FileTransfer,public modalCtrl: ModalController,private storage:Storage,public translate:TranslateService) {
@@ -72,12 +77,44 @@ export class RegistrationPage {
         this.data.shop_image='';
         this.data.document_image_back='';
         this.data.pan_image='';
-        this.getstatelist();
+        // this.getstatelist();
+
+        this.getStateList();
+
         if(navParams.data.data){
             this.data = navParams.data.data;
             // this.data.distributor_id = {};
             // this.data.distributor_id = navParams.data.data.distributor_id;
             // this.data.distributor_id.company_name = navParams.data.data.company_name;
+            this.data = JSON.parse(JSON.stringify(navParams.data.data));
+            this.data.state={};
+            this.data.state['state_name']=navParams.data.data.state;
+            
+            this.data.district={};
+            this.data.district['district_name']=navParams.data.data.district;
+    
+            this.data.city={};
+            this.data.city['city_name']=navParams.data.data.city;
+            console.log(this.data.city['city_name']);
+    
+            // this.data.permanent_state={};
+            this.data.permanent_state=navParams.data.data.permanent_state;
+            console.log(this.data.permanent_state);
+            
+    
+            
+            // this.data.parmanent_district={};
+            this.data.parmanent_district=navParams.data.data.parmanent_district;
+            console.log(this.data.parmanent_district);
+    
+            // this.data.permanent_city={};
+            this.data.permanent_city=navParams.data.data.permanent_city
+            console.log(this.data.permanent_city);
+            
+    
+            
+            this.getDistrictList(this.data.state['state_name']);
+            this.getCityList(this.data.district['district_name']);
             this.data.karigar_edit_id = this.data.id;
         }
         console.log(this.data.state);
@@ -85,6 +122,14 @@ export class RegistrationPage {
         if (this.data.state) {
             this.getDistrictList(this.data.state);
         }
+
+
+
+
+       
+     
+
+
     }
     
     cam:any="";
@@ -146,19 +191,6 @@ export class RegistrationPage {
     }
     
     
-    
-    
-    getstatelist(){
-        this.service.get_rqst('app_master/getStates').subscribe( r =>
-            {
-                console.log(r);
-                this.state_list=r['states'];
-                
-                this.karigar_id=r['id'];
-                console.log(this.state_list);
-            });
-        }
-        
         getDistributor(district){
             this.service.post_rqst({'district':district},'app_master/getDistributors')
             .subscribe( (r) =>
@@ -169,9 +201,6 @@ export class RegistrationPage {
             });
         }
         
-
-
-
 
         // getstatelist() {
         //     this.service.get_rqst('app_master/getStates').subscribe(r => {
@@ -234,12 +263,6 @@ export class RegistrationPage {
         // }
 
 
-
-
-
-
-
-
         RequiredAlert(text) {
             let alert = this.alertCtrl.create({
                 title: 'Alert!',
@@ -250,69 +273,75 @@ export class RegistrationPage {
             alert.present();
         }
 
+        // getstatelist(){
+        //     this.service.get_rqst('app_master/getStates').subscribe( r =>
+        //         {
+        //             console.log(r);
+        //             this.state_list=r['states'];
+                    
+        //             this.karigar_id=r['id'];
+        //             console.log(this.state_list);
+        //         });
+        //     }
 
-
-
-        getDistrict(state) {
-            console.log(state);
+        // getDistrict(state) {
+        //     console.log(state);
             
-            let loading = this.loadingCtrl.create({
-                spinner: 'hide',
-                content: `<img src="./assets/imgs/gif.svg" class="h15" />`,
-            });
+        //     let loading = this.loadingCtrl.create({
+        //         spinner: 'hide',
+        //         content: `<img src="./assets/imgs/gif.svg" class="h15" />`,
+        //     });
             
            
-            loading.present();
-        }
+        //     loading.present();
+        // }
         
+        // getDistrictList(state_name)
+        // {
+        //     console.log("state name is call ==>",state_name);
+        //     this.service.post_rqst({'state_name':state_name},'app_master/getDistrict')
+        //     .subscribe( (r) =>
+        //     {
+        //         console.log(r);
+        //         this.district_list=r['districts'];
+        //         console.log(this.state_list);
+        //     });
+        // }
         
+        // getCityList(district_name)
+        // {
+        //     console.log(district_name);
+        //     this.service.post_rqst({'district_name':district_name},'app_master/getCity')
+        //     .subscribe( (r) =>
+        //     {
+        //         console.log(r);
+        //         this.city_list=r['cities'];
+        //         this.pincode_list=r['pins'];
+        //         console.log(this.pincode_list);
+        //     });
+        // }
         
-        getDistrictList(state_name)
-        {
-            console.log("state name is call ==>",state_name);
-            this.service.post_rqst({'state_name':state_name},'app_master/getDistrict')
-            .subscribe( (r) =>
-            {
-                console.log(r);
-                this.district_list=r['districts'];
-                console.log(this.state_list);
-            });
-        }
-        
-        getCityList(district_name)
-        {
-            console.log(district_name);
-            this.service.post_rqst({'district_name':district_name},'app_master/getCity')
-            .subscribe( (r) =>
-            {
-                console.log(r);
-                this.city_list=r['cities'];
-                this.pincode_list=r['pins'];
-                console.log(this.pincode_list);
-            });
-        }
-        
-        getaddress(pincode)
-        {
-            if(this.data.pincode.length=='6')
-            {
-                this.service.post_rqst({'pincode':pincode},'app_karigar/getAddress')
-                .subscribe( (result) =>
-                {
-                    console.log(result);
-                    var address = result.address;
-                    if(address!= null)
-                    {
-                        this.data.state = result.address.state_name;
-                        this.getDistrictList(this.data.state)
-                        this.data.district = result.address.district_name;
-                        this.data.city = result.address.city;
-                        console.log(this.data);
-                    }
-                });
-            }
+        // getaddress(pincode)
+        // {
+        //     if(this.data.pincode.length=='6')
+        //     {
+        //         this.service.post_rqst({'pincode':pincode},'app_karigar/getAddress')
+        //         .subscribe( (result) =>
+        //         {
+        //             console.log(result);
+        //             var address = result.address;
+        //             if(address!= null)
+        //             {
+        //                 this.data.state = result.address.state_name;
+        //                 this.getDistrictList(this.data.state)
+        //                 this.data.district = result.address.district_name;
+        //                 this.data.city = result.address.city;
+        //                 console.log(this.data);
+        //             }
+        //         });
+        //     }
             
-        }
+        // }
         
         dsr_match:any='';
         scrollUp()
@@ -425,6 +454,10 @@ export class RegistrationPage {
                 }
 
 
+
+                this.data.state = this.data.state.state_name;
+                this.data.city = this.data.city.city_name;
+                this.data.district = this.data.district.district_name;
                     this.service.post_rqst( {'karigar': this.data },'app_karigar/addKarigar')
                     .subscribe( (r) =>
                     {
@@ -1049,5 +1082,47 @@ MobileNumber(event: any) {
 //         console.log(this.assistant_mc);
 //     });
 // }
+
+
+
+
+
+
+getStateList(){
+    this.service.post_rqst({}, 'master/getLocationStates')
+    .subscribe(d => { 
+        this.states = d.locationStates;
+        this.per_states = d.locationStates;
+
+        let index=this.per_states.findIndex(row=> row.state_name==this.data.permanent_state)
+        console.log(index);
+        
+            this.data.permanent_state=this.per_states[index];
+            console.log( this.data.permanent_state);
+            
+
+
+    });
+}
+
+
+getDistrictList(state_name){
+    console.log(state_name);
+    
+    this.service.post_rqst({'state_name':state_name}, 'master/getLocationDistricts')
+    .subscribe(d => { 
+        
+        this.districts = d.locationDistricts;
+    });
+}
+
+
+getCityList(district){
+    this.service.post_rqst({'district_name':district}, 'master/getLocationCitys')
+    .subscribe(d => { 
+        
+        this.citys = d.locationCitys;
+    });
+}  
 
 }

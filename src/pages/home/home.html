@@ -13,7 +13,7 @@
         </ion-buttons>
 
        
-        <ion-buttons end (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic' " >
+        <ion-buttons end (click)="scan()" *ngIf="karigar_detail.status =='Verified' && karigar_detail.machanic_type =='Assistant Mechanic'  && karigar_detail.kyc_status =='Verified'" >
             <button ion-button icon-only >
                <ion-icon name="qr-scanner"></ion-icon>
             </button>

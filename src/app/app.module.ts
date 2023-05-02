@@ -137,7 +137,7 @@ export function createTranslateLoader(http: HttpClient) {
         PointListPageModule,
 AssitanceDetailPageModule,
 AssitanceListPageModule,
-
+IonicSelectableModule,
         PointDetailPageModule,
         ProfilePageModule,
         MainHomePageModule,

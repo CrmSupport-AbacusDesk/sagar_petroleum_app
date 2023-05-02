@@ -193,32 +193,106 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <ion-item class="cs-input" [ngClass]="{'error':(f.address && address?.invalid) || (f.submitted && !address.valid)}">
                 <ion-label floating>{{'Address' | translate}}*</ion-label>
                 
                 <ion-input type="text" name="address" #address="ngModel" [(ngModel)]="data.address" (ngModelChange)="caps_add(data.address)" required ></ion-input>
             </ion-item>
+
+
+
+
+            <ion-item class="cs-select " [ngClass]="{'error':f.submitted && state?.invalid}">
+                <ion-label style="margin-bottom: 4px;margin-top: 8px;">{{'State' | translate}}*</ion-label>
+                <ionic-selectable
+                item-content 
+                [(ngModel)]="data.state" 
+                #state="ngModel"
+                [items]="states"
+                name="state"
+                itemValueField="state_name"
+                itemTextField="state_name"
+                [hasVirtualScroll]="true"
+                (onChange)="getDistrictList(data.state.state_name)"
+                [canSearch]="true" required>
+            </ionic-selectable>
+        </ion-item>
+        <div *ngIf="f.submitted && state.invalid" class="invalid-feedback">
+            <div *ngIf="state.errors.required">{{'Field is Required' | translate}}</div>
+        </div>
+        
+        
+        <ion-item class="cs-select" [ngClass]="{'error':f.submitted && district?.invalid}">
+            <ion-label style="margin-bottom: 4px;margin-top: 8px;">{{'District' | translate}}*</ion-label>
+            <ionic-selectable
+            item-content 
+            [(ngModel)]="data.district" 
+            #district="ngModel"
+            [items]="districts"
+            name="district"
+            itemValueField="district_name"
+            itemTextField="district_name"
+            [hasVirtualScroll]="true"
+            (onChange)="getCityList(data.district.district_name)"
+            [canSearch]="true" required>
+        </ionic-selectable>
+    </ion-item>
+    
+    
+    <div *ngIf="f.submitted && district.invalid" class="invalid-feedback">
+        <div *ngIf="district.errors.required">{{'Field is Required' | translate}}</div>
+    </div>
+    
+    
+    <ion-item class="cs-select" [ngClass]="{'error':f.submitted && city?.invalid}">
+        <ion-label style="margin-bottom: 4px;margin-top: 8px;">{{'City' | translate}}*</ion-label>
+        <ionic-selectable
+        item-content 
+        [(ngModel)]="data.city" 
+        #city="ngModel"
+        [items]="citys"
+        name="city"
+        itemValueField="city_name"
+        itemTextField="city_name"
+        [hasVirtualScroll]="true"
+       
+        [canSearch]="true" required>
+    </ionic-selectable>
+</ion-item>
+<div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
+    <div *ngIf="city.errors.required">{{'Field is Required' | translate}}</div>
+</div>
+
+ <ion-item class="cs-input" [ngClass]="{'error':f.submitted && pincode?.invalid}">
+                <ion-label floating>{{'Pincode' | translate}}</ion-label>
+                <ion-input type="tel" name="pincode" [(ngModel)]="data.pincode" #pincode="ngModel"  maxlength="6" minlength="6" ></ion-input>
+            </ion-item> 
+
+<!-- <ion-item [ngClass]="{'error':f.submitted && pincode?.invalid}">
+    <ion-label floating>{{'Pincode' | translate}}*</ion-label>
+  
+    <ion-input type="tel" name="pincode" [(ngModel)]="data.pincode" #pincode="ngModel" required maxlength="6" minlength="6" ></ion-input>
+</ion-item>
+<div *ngIf="f.submitted && pincode.invalid" class="invalid-feedback">
+    <div *ngIf="pincode.errors.required">{{'Field is Required' | translate}}</div>
+</div> -->
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
             
-            <ion-item class="multi-select" [ngClass]="{'error':f.submitted && state?.invalid}">
+            <!-- <ion-item class="multi-select" [ngClass]="{'error':f.submitted && state?.invalid}">
                 <ion-label class="mt0 mb0">{{'State' | translate}}*</ion-label>
                 <ion-select class="pt0 pb0" name="state" [(ngModel)]="data.state" #state="ngModel" (ngModelChange)="getDistrictList(data.state)" >
                     <ion-option *ngFor="let row of state_list" value="{{row.state_name}}" required>{{row.state_name}}</ion-option>
@@ -231,16 +305,17 @@
                     <ion-option *ngFor="let row of district_list" value="{{row.district_name}}" required>{{row.district_name}}</ion-option>
                 </ion-select>
             </ion-item>
-       
-            <ion-item class="cs-input" [ngClass]="{'error':f.submitted && pincode?.invalid}">
-                <ion-label floating>{{'Pincode' | translate}}</ion-label>
-                <ion-input type="tel" name="pincode" [(ngModel)]="data.pincode" #pincode="ngModel"  maxlength="6" minlength="6" ></ion-input>
-            </ion-item>
-
-            <ion-item class="cs-input" [ngClass]="{'error':f.submitted && city?.invalid}">
+        -->
+            <!-- <ion-item class="cs-input" [ngClass]="{'error':f.submitted && city?.invalid}">
                 <ion-label floating>{{'City' | translate}}*</ion-label>
                 <ion-input type="text" name="city" [(ngModel)]="data.city" #city="ngModel" required></ion-input>
-            </ion-item>
+            </ion-item> -->
+            <!-- <ion-item class="cs-input" [ngClass]="{'error':f.submitted && pincode?.invalid}">
+                <ion-label floating>{{'Pincode' | translate}}</ion-label>
+                <ion-input type="tel" name="pincode" [(ngModel)]="data.pincode" #pincode="ngModel"  maxlength="6" minlength="6" ></ion-input>
+            </ion-item> -->
+
+        
 
                  <!-- (input)="getaddress(data.pincode)" -->
             <!-- <ion-item class="multi-select" [ngClass]="{'error':f.submitted && state?.invalid}">
