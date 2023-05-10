@@ -61,6 +61,7 @@ export class HomePage {
     karigar_detail:any={};
     last_point:any='';
     today_point:any='';
+    six_month_average:any='';
     appbanner:any={};
     qr_code:any='';
     coupon_value:any='';
@@ -128,6 +129,7 @@ export class HomePage {
             this.last_point=r['last_point'];
             this.notify_cn=r['notifications'];
             this.today_point=r['today_point'];
+            this.six_month_average=r['six_month_average'];
             this.total_balance_point = parseInt( this.karigar_detail.balance_point) + parseInt(this.karigar_detail.referal_point_balance );
             console.log(this.total_balance_point);
             // this.sharepoint=r['points']['owner_ref_point'];
